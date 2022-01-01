@@ -8,11 +8,10 @@ import StraightenIcon from '@mui/icons-material/Straighten';
 import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 import SquareFootIcon from '@mui/icons-material/SquareFoot';
 import Paper from '@mui/material/Paper';
-import { lightBlue, pink } from '@mui/material/colors';
 
-const primary = pink[500];
-export default function Footer() {
-  const [value, setValue] = React.useState(0);
+
+export default function Footer(props) {
+  const [value, setValue] = React.useState();
   const ref = React.useRef(null);
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
@@ -24,6 +23,7 @@ export default function Footer() {
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
+            props.navProp(newValue);
           }}
         >
           <BottomNavigationAction
