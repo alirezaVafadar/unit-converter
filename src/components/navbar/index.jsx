@@ -20,6 +20,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { padding } from '@mui/system';
 
 
 const pages = ['about', 'contact'];
@@ -182,7 +183,7 @@ const Navbar = (props) => {
                 <KeyboardArrowUpIcon />
                 </Fab>
             </ScrollTop>
-            <Toolbar id="back-to-top-anchor" />
+            <Toolbar style={{minHeight:"0px"}} id="back-to-top-anchor" />
     </React.Fragment>
   );
 };

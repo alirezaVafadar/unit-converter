@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from "@mui/styles";
 import { Typography,Box,Container,CssBaseline,Grid,Paper, Card, CardMedia} from "@mui/material";
+import { spacing } from '@mui/system';
 
 
 const useStyles=makeStyles((theme)=>({
@@ -16,7 +17,7 @@ const useStyles=makeStyles((theme)=>({
     borderRadius:"3vh"
   },
   media:{
-    height: 95,
+    height: 80,
     width: '100%',
     objectFit: 'contain'
     
@@ -25,7 +26,7 @@ const useStyles=makeStyles((theme)=>({
     justifyContent:"center"
   },
   card:{
-    width: 95,
+    width: 80,
     margin: 'auto',
     boxShadow:"none"
     
@@ -38,7 +39,7 @@ export default function Home() {
   return (
     <>
       <CssBaseline />
-          <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
+          <Typography variant="h4" align="center" color="textPrimary" paddingTop={5} gutterBottom>
             Unit Convertion for middle-east immigrants
           </Typography>
           
@@ -101,7 +102,7 @@ export default function Home() {
                     <Card className={classes.card}>
                       <CardMedia
                         component="img"
-                        className={classes.Media}
+                        className={classes.media}
                         src="/images/mui.png"
                         alt="material ui"
                       />
