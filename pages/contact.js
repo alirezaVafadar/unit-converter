@@ -2,39 +2,45 @@ import React from "react";
 import Header from "../src/components/header"
 import Navbar from "../src/components/navbar";
 import { makeStyles } from "@mui/styles";
-import {Container,CssBaseline,Grid,CardActions,Button, Card, CardMedia} from "@mui/material";
+import {Container,CssBaseline,Grid, Box,Typography} from "@mui/material";
 
 const useStyles=makeStyles((theme)=>({
   media:{
-    height: 80,
-    width: '100%',
+    height: "60%",
+    width: '60%',
     objectFit: 'contain'
-    
-  },
-  card:{
-    width: 80,
-    margin: 'auto',
-    boxShadow:"none"
     
   },
   profileCover:{
     maxWidth:"100%",
     minWidth:"100%",
-    paddingTop:5,
     borderRadius:"3vh"
   },
   profilePhoto:{
+    border:"solid",
+    borderWidth:"3px",
+    borderColor:"#9c27b0",
     borderRadius:"50%",
     maxWidth:"30%",
     position:"relative",
     bottom:"8vh"
+    
   },
   profile:{
     display:"flex",
-    justifyContent:"center"
+    justifyContent:"center", 
+  },
+  profileBox:{
+    borderRadius:"3vh",
+    marginTop:"2vh",
   }
 }));
-
+const srcSocials=[
+  "/images/linkedin.png",
+  "/images/instagram.png",
+  "/images/telegram.png",
+  "/images/mail.png"
+]
 export default function Contact() {
   const classes=useStyles();
   return (
@@ -42,80 +48,35 @@ export default function Contact() {
       <Header><Navbar/></Header> 
       
       <CssBaseline/>
-      <Container maxWidth="xl" classname={classes.profile}>
+      <Container maxWidth="xl">
+        
+        <Box sx={{ bgcolor: '#9c27b04a'}} className={classes.profileBox}>
           <Grid item xs={12} md={12} classname={classes.profile}>
             <img src="/images/cover.jpg" className={classes.profileCover}/>
           </Grid>
-          <Grid item xs={12} md={12} classname={classes.profile}>
+          <Grid item xs={12} md={12}  className={classes.profile}>
             <img src="/images/profilephoto.jpg" className={classes.profilePhoto}/>
           </Grid>
-      </Container>
-      <Container maxWidth="lg">
-            <Grid container spacing={1}>
-              <Grid container item spacing={1}>
-                <Grid item xs={3} md={3}>
-                  
-                    <Card className={classes.card}>
-                      <CardMedia
-                        component="img"
+          <Typography variant="h5"align="center" gutterBottom>Alireza Vafadar</Typography>
+          <Container maxWidth="lg" >
+            <Grid container spacing={1} >
+              <Grid container item spacing={1} className={classes.profile}>
+                {
+                  srcSocials.map((url)=>{return(
+                    <Grid item xs={3} md={2}>
+                      <img
                         className={classes.media}
-                        src="/images/linkedin.png"
-                        alt="linkedin alireza vafadar"
+                        src={url}
                       />   
-                      <CardActions>
-                        <Button color="warning" size="small">Linkedin</Button>
-                      </CardActions>
-                    </Card>
-                  
-                </Grid>
-                <Grid item xs={3} md={3}>
-                  
-                    <Card className={classes.card}>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src="/images/instagram.png"
-                        alt="instagram front_end.jsx"
-                      />
-                      <CardActions>
-                        <Button color="warning" size="small">instagram</Button>
-                      </CardActions>
-                    </Card>
-                  
-                </Grid>
-                <Grid item xs={3} md={3}>
-                  
-                    <Card className={classes.card}>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src="/images/telegram.png"
-                        alt="telegram"
-                      />
-                      <CardActions>
-                        <Button color="warning" size="small">telegram</Button>
-                      </CardActions>
-                    </Card>
-                  
-                </Grid>
-                <Grid item xs={3} md={3}>
-                  
-                    <Card className={classes.card}>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src="/images/mail.png"
-                        alt="alireza vafadar gmail"
-                      />
-                      <CardActions>
-                        <Button color="warning" size="small">mail</Button>
-                      </CardActions>
-                    </Card>
-                  
-                </Grid>
+                    </Grid>
+                  )})
+                }
               </Grid>
             </Grid>
           </Container>
+        </Box>
+      </Container>
+      
     </div>
   )
 }
