@@ -2,8 +2,9 @@ import React from "react";
 import Header from "../src/components/header"
 import Navbar from "../src/components/navbar";
 import { makeStyles } from "@mui/styles";
-import {Container,CssBaseline,Grid, Box,Typography} from "@mui/material";
-
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import {Container,CssBaseline,Grid,Button, Box,Typography,TextField} from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 const useStyles=makeStyles((theme)=>({
   media:{
     height: "70%",
@@ -14,7 +15,8 @@ const useStyles=makeStyles((theme)=>({
   profileCover:{
     maxWidth:"100%",
     minWidth:"100%",
-    borderRadius:"3vh"
+    borderRadius:"3vh",
+    
   },
   profilePhoto:{
     border:"solid",
@@ -41,10 +43,22 @@ const useStyles=makeStyles((theme)=>({
   }
 }));
 const srcSocials=[
-  "/images/linkedin.png",
-  "/images/instagram.png",
-  "/images/telegram.png",
-  "/images/mail.png"
+  {
+    url:"/images/linkedin.png",
+    link:"http://linkedin.com/in/alireza-vafadar-9822b9176"
+  },
+  {
+    url:"/images/instagram.png",
+    link:"https://www.instagram.com/front_end.jsx/"
+  },
+  {
+    url:"/images/telegram.png",
+    link:"https://t.me/alireza_vafadar"
+  },
+  {
+    url:"/images/mail.png",
+    link:"mailto:alireza.vfr.mail@gmail.com"
+  }
 ]
 export default function Contact() {
   const classes=useStyles();
@@ -64,16 +78,41 @@ export default function Contact() {
           </Grid>
           <Typography variant="h5"align="center" className={classes.profile} >Alireza Vafadar</Typography>
           <Typography variant="h6"align="center" className={classes.profile} gutterBottom>Front-End developer(React JS)</Typography>
+          <Container maxWidth="lg">
+            <Grid md={12} marginBottom="5%">
+              <Box sx={{display: 'flex', alignItems: 'flex-end' }}>
+                <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <TextField id="input-with-sx" label="Your Name" variant="standard" />
+              </Box>
+            </Grid>
+            <Grid md={12} marginBottom="4%">
+              <TextField
+                  id="outlined-multiline-static"
+                  label="your message"
+                  multiline
+                  rows={5}
+                  style={{width:"90%"}}
+                />
+            </Grid>
+            <Grid md={12} marginBottom="10%">
+              <Button variant="contained" endIcon={<SendIcon />}>
+                  Send
+              </Button>
+            </Grid>
+              
+            </Container>
           <Container maxWidth="lg" >
             <Grid container spacing={1} >
               <Grid container item spacing={1} className={classes.socials}>
                 {
-                  srcSocials.map((url)=>{return(
+                  srcSocials.map((item)=>{return(
                     <Grid item xs={2} md={1}>
-                      <img
-                        className={classes.media}
-                        src={url}
-                      />   
+                      <a href={item.link}>
+                        <img
+                          className={classes.media}
+                          src={item.url}
+                        />   
+                      </a>
                     </Grid>
                   )})
                 }
@@ -82,7 +121,9 @@ export default function Contact() {
           </Container>
         </Box>
       </Container>
-      
+      <Typography  variant="h6" align="center" color="textSecondary" fontSize="80%" bgcolor="#e8e0e0 " marginTop="2vh">
+            designed by Alireza Vafadar
+      </Typography>
     </div>
   )
 }

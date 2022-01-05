@@ -2,6 +2,7 @@ import React from "react";
 import { Container,Grid,Box,Typography} from "@mui/material";
 import TextField from '@mui/material/TextField';
 import { makeStyles } from "@mui/styles";
+import InputAdornment from '@mui/material/InputAdornment';
 
 const useStyles=makeStyles((theme)=>({
     countGrid:{
@@ -54,6 +55,9 @@ export default function Area() {
                         color="secondary"
                         label={"ft²"}
                         value={sqfeet}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">sqft</InputAdornment>,
+                          }}
                         onChange={handleOnSqfeet}
                         />
                         <TextField
