@@ -6,8 +6,8 @@ import {Container,CssBaseline,Grid, Box,Typography} from "@mui/material";
 
 const useStyles=makeStyles((theme)=>({
   media:{
-    height: "60%",
-    width: '60%',
+    height: "70%",
+    width: '70%',
     objectFit: 'contain'
     
   },
@@ -22,13 +22,18 @@ const useStyles=makeStyles((theme)=>({
     borderColor:"#9c27b0",
     borderRadius:"50%",
     maxWidth:"30%",
-    position:"relative",
-    bottom:"8vh"
+    
     
   },
   profile:{
     display:"flex",
-    justifyContent:"center", 
+    justifyContent:"center",
+    position:"relative",
+    bottom:"8vh" 
+  },
+  socials:{
+    display:"flex",
+    justifyContent:"center",
   },
   profileBox:{
     borderRadius:"3vh",
@@ -57,13 +62,14 @@ export default function Contact() {
           <Grid item xs={12} md={12}  className={classes.profile}>
             <img src="/images/profilephoto.jpg" className={classes.profilePhoto}/>
           </Grid>
-          <Typography variant="h5"align="center" gutterBottom>Alireza Vafadar</Typography>
+          <Typography variant="h5"align="center" className={classes.profile} >Alireza Vafadar</Typography>
+          <Typography variant="h6"align="center" className={classes.profile} gutterBottom>Front-End developer(React JS)</Typography>
           <Container maxWidth="lg" >
             <Grid container spacing={1} >
-              <Grid container item spacing={1} className={classes.profile}>
+              <Grid container item spacing={1} className={classes.socials}>
                 {
                   srcSocials.map((url)=>{return(
-                    <Grid item xs={3} md={2}>
+                    <Grid item xs={2} md={1}>
                       <img
                         className={classes.media}
                         src={url}
