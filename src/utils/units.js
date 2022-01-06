@@ -44,13 +44,4 @@ export const units = [
       label: 'Time',
     }
   ];
-export const area=[
-    {
-        units=["m²","ft²","mi²"]    
-    },
-    {
-        formula=["m²","ft²","mi²"]    
-    },
-
-]
  
