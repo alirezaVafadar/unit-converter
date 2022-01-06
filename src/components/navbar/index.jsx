@@ -9,6 +9,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import ListItemText from '@mui/material/ListItemText';
+import ListItem from '@mui/material/ListItem';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import HomeIcon from '@mui/icons-material/Home';
@@ -19,11 +21,10 @@ import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { padding } from '@mui/system';
+import Drawer from '@mui/material/Drawer';
 
 
-const pages = ['about', 'contact'];
+const pages = ['converter', 'contact'];
 
 function ScrollTop(props) {
     const {children} = props;
@@ -63,45 +64,13 @@ function ScrollTop(props) {
 
 const Navbar = (props) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const [openProfile,setOpenProfile]=React.useState(false);
-    const [userAuth,setUserAuth]=React.useState(true);
-    const [userState,setUserState]=React.useState("Logout");
-    function handleOnProfile(){
-        setOpenProfile((prevState)=>{return !prevState});
-        
-    }   
-    function handleOnLog(){
-        setUserAuth((prevState)=>{return !prevState});
-        handleUserState();
-    }
-    function handleUserState(){
-        if(userAuth){
-            setUserState("Logout");
-            console.log(userState,userAuth);
-        }
-        if(!userAuth){
-            setUserState("Login");
-            console.log(userState,userAuth);
-        }
-    }
     const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+      setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
     const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+      setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-    useEffect(()=>{
-
-    },[userAuth])
   return (
     <React.Fragment>
             <CssBaseline />
@@ -117,7 +86,7 @@ const Navbar = (props) => {
                         <Link href="/"><a><HomeIcon fontSize="large"/></a></Link>
                     </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}>
                         <IconButton
                         size="large"
                         aria-label="account of current user"
@@ -128,30 +97,18 @@ const Navbar = (props) => {
                         >
                         <MenuIcon />
                         </IconButton>
-                        <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorElNav}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                        open={Boolean(anchorElNav)}
-                        onClose={handleCloseNavMenu}
-                        sx={{
-                            display: { xs: 'block', md: 'none' },
-                        }}
+                        <Drawer
+                          open={Boolean(anchorElNav)}
+                          onClose={handleCloseNavMenu}
                         >
-                        {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
+                          {pages.map((page) => (
+                                <ListItem button key={page} onClick={handleCloseNavMenu}>
+                                  <Link href={"/"+page}>
+                                    <ListItemText primary={page} />
+                                  </Link>
+                                </ListItem>
                         ))}
-                        </Menu>
+                        </Drawer>
                     </Box>
                     <Typography
                         variant="h6"
