@@ -55,9 +55,6 @@ export default function Area() {
                         color="secondary"
                         label={"ft²"}
                         value={sqfeet}
-                        InputProps={{
-                            endAdornment: <InputAdornment position="end">sqft</InputAdornment>,
-                          }}
                         onChange={handleOnSqfeet}
                         />
                         <TextField
